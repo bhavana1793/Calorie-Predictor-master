@@ -1,11 +1,26 @@
 import os
 import cv2
 import time
-
+import matplotlib.image as img
+import numpy as np
+from tensorflow.keras.preprocessing import image
+import numpy as np
+import os
+from tensorflow.keras import models
+from PIL import Image
 import numpy as np
 from flask import Flask, render_template, request
 from werkzeug.utils import secure_filename
 
+from tensorflow.keras import models
+from tensorflow.keras.preprocessing.image import img_to_array
+from tensorflow.keras.preprocessing.image import img_to_array
+from tensorflow.keras.preprocessing import image
+from tensorflow.keras.preprocessing.image import load_img
+import numpy as np
+from flask import Flask, render_template, request
+from werkzeug.utils import secure_filename
+import random
 app = Flask(__name__)
 
 conf_thresh = 0.3
@@ -15,7 +30,7 @@ nets = cv2.dnn.readNet('yolov2-food100.weights', 'yolov2-food100.cfg')
 predicted_class = None
 glob_image = None
 
-
+#commenting
 def get_prediction(image, net, LABELS, COLORS):
     (H, W) = image.shape[:2]
     # determine only the *output* layer names that we need from YOLO
@@ -125,24 +140,66 @@ def home():
 def upload():
     return render_template('UploadImg.html')
 
+#predicts food class with model, image as input
+
+def predict_class(model, image2,imageorig, show = True):
+   global glob_image
+   print("my IMAGE 2 is as below----------------------------")
+   print(image2)
+   #preporcessing of image tha twas uplaoded 
+   img = load_img(image2, target_size=(299, 299))
+   imgarray = img_to_array(img)                    
+   imgarray2 = np.expand_dims(imgarray, axis=0)         
+   imgarray2 /= 255.   
+   #img = image2.resize(target_size, refcheck=False)
+   pred = model.predict(imgarray2)
+   index = np.argmax(pred)
+   print(index)
+   #creatinglist of food classes 
+   food_list = ['apple_pie', 'beef_carpaccio', 'bibimbap', 'cup_cakes', 'foie_gras', 
+                'french_fries', 'garlic_bread', 'pizza', 'spring_rolls', 
+                'spaghetti_carbonara', 'strawberry_shortcake']
+   food_list.sort()
+   predicted_class = food_list[index]
+
+   print(predicted_class)
+   
+   glob_image = 'Image' + predicted_class
+   cv2.imwrite(f'static/{glob_image}.jpg', imageorig)
+  
+   print(predicted_class)
+   return predicted_class
 
 @app.route('/predict', methods=['POST'])
 def predict():
     global predicted_class
     if request.method == 'POST':
         f = request.files['file']
-
         # Save the file to ./uploads
         basepath = os.path.dirname(__file__)
         file_path = os.path.join(
             basepath, 'uploads', secure_filename(f.filename))
         f.save(file_path)
-        image2 = cv2.imread(file_path)
+
+        image2path=file_path
+        print('filepath is------')
         print(file_path)
+        #f = open("lentil-samosa-recipe-01.jpg", 'rb')
+        imageorig = Image.open(f)
+        imageorig = cv2.imread(os.path.join(basepath, 'uploads', secure_filename(f.filename)))
+        print('image originalis-----')
+        print(imageorig)
 
-        predicted_class = predict_image(image2=image2)
+        model_best = models.load_model('best_model_11class.hdf5',compile = False)
+        predicted_class=predict_class(model_best, image2path,imageorig, True)
+
+        #OLDpredicted_class = predict_image(image2=image2)
         print(predicted_class)
-
+       # predicted_class = predict_image(image2=image2)
+        #print(predicted_class)
+        imagepath = f'static/{glob_image}.jpg'
+        print('image path is')
+        print(imagepath)
         return render_template('InputWeight.html', predicted_class=predicted_class, imagepath=f'static/{glob_image}.jpg')
 
 
@@ -152,112 +209,28 @@ def result():
         weight = int(request.form['weight'])
 
         # os.remove(f'static/{glob_image}.jpg')
-        '''
-        cal_dict = {'rice': 5,
-'eels-on-rice' : 10,
-'pilaf
-chicken-n-egg-on-rice
-pork-cutlet-on-rice
-beef-curry
-sushi
-chicken-rice
-fried-rice
-tempura-bowl
-bibimbap
-toast
-croissant
-roll-bread
-raisin-bread
-chip-butty
-hamburger
-pizza
-sandwiches
-udon-noodle
-tempura-udon
-soba-noodle
-ramen-noodle
-beef-noodle
-tensin-noodle
-fried-noodle
-spaghetti
-Japanese-style-pancake
-takoyaki
-gratin
-sauteed-vegetables
-croquette
-grilled-eggplant
-sauteed-spinach
-vegetable-tempura
-miso-soup
-potage
-sausage
-oden
-omelet
-ganmodoki
-jiaozi
-stew
-teriyaki-grilled-fish
-fried-fish
-grilled-salmon
-salmon-meuniere
-sashimi
-grilled-pacific-saury-
-sukiyaki
-sweet-and-sour-pork
-lightly-roasted-fish
-steamed-egg-hotchpotch
-tempura
-fried-chicken
-sirloin-cutlet
-nanbanzuke
-boiled-fish
-seasoned-beef-with-potatoes
-hambarg-steak
-beef-steak
-dried-fish
-ginger-pork-saute
-spicy-chili-flavored-tofu
-yakitori
-cabbage-roll
-rolled-omelet
-egg-sunny-side-up
-fermented-soybeans
-cold-tofu
-egg-roll
-chilled-noodle
-stir-fried-beef-and-peppers
-simmered-pork
-boiled-chicken-and-vegetables
-sashimi-bowl
-sushi-bowl
-fish-shaped-pancake-with-bean-jam
-shrimp-with-chill-source
-roast-chicken
-steamed-meat-dumpling
-omelet-with-fried-rice
-cutlet-curry
-spaghetti-meat-sauce
-fried-shrimp
-potato-salad
-green-salad
-macaroni-salad
-Japanese-tofu-and-vegetable-chowder
-pork-miso-soup
-chinese-soup
-beef-bowl
-kinpira-style-sauteed-burdock
-rice-ball
-pizza-toast
-dipping-noodles
-hot-dog
-french-fries
-mixed-rice
-goya-chanpuru
- }
- '''
+        print(predicted_class)
+        cal_dict = {'apple_pie': 2.37, 'beef_carpaccio':1.26, 'bibimbap':1.46, 'cup_cakes':3.05, 'foie_gras':4.62, 
+                'french_fries':3.19, 'garlic_bread':3.49, 'pizza':2.66, 'spring_rolls':1.53, 
+                'spaghetti_carbonara':2.0, 'strawberry_shortcake':3.46}
+        calories= cal_dict[predicted_class] * weight
+        print(calories)
+        imgs = os.listdir('static/generated-images/')
+        #imgs = [ file for file in imgs]
+        #imgrand = random.sample(imgs,k=5)
+       
 
-        #calories= cal_dict['predicted_class'] * weight
-        return render_template('result.html', calories=80)
+        d=random.choice(imgs)
+        e=random.choice(imgs)
+        f=random.choice(imgs)
+        g=random.choice(imgs)
+        #os.startfile(d)
+        weightofperson = int(request.form['weightofperson'])
+        yogatime=round(calories/(0.049*weightofperson),2)
+        print(yogatime)
+        danceminutes=round(calories/(0.084*weightofperson),2)
+        print(danceminutes)
+        return render_template('result.html', calories=calories, d=d,e=e,f=f,g=g,yogatime=yogatime,danceminutes=danceminutes)
 
 if __name__ == '__main__':
     app.run(debug=False)
