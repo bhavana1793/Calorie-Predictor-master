@@ -11,12 +11,10 @@
   <link href="static/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 <body>
-  <nav class="white" role="navigation">
-    <div class="nav-wrapper container">
-      <a id="logo-container" href="#" class="brand-logo">DR fit</a>
+  <nav class="red lighten-4" role="navigation">
+    <div class="nav-wrapper container"><a href="/" class="brand-logo"><i class="material-icons">fitness_center</i>Dr FIT</a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="https://github.com/Yiming-Miao/Calorie-Predictor">GitHub link</a></li>
-
+        <li><a href="https://github.com/bhavana1793/Calorie-Predictor-master">GitHub</a></li>
       </ul>
 
       <ul id="nav-mobile" class="sidenav">
@@ -31,32 +29,17 @@
       <div class="container">
         <br><br>
         <div class="row center">
-          <h5 class="header center brown-text">Dr FIT a Calorie prediction system</h5>
+          <h5 class="header center brown-text">DR FIT An AI based Finess Application </h5>
         </div>
         <div class="row center">
           <a href="{{ url_for('upload') }}" id="download-button" class="btn-large waves-effect waves-light red lighten-1">Get Started</a>
-        <form action="{{ url_for('upload') }}">
-            <label for="age">age:</label>
-                    <input type="text" id="age" name="age"><br><br>
-                    <label for="weight">weight</label>
-                    <input type="text" id="weight" name="weight"><br><br>
-                    <input type="radio" id="genderchoice1" name="female" value="female">
-                    <label for="genderchoice1">Female</label>
-                    <input type="radio" id="genderchoice2" name="male" value="male">
-                    <label for="genderchoice2">male</label>
-                   
-                    <input type="submit" value="Submit">
-                    
-                    </form>
-            </form>
           </div>
-        <br><br>
+     <br><br>
 
-      </div>/
+      </div>
     </div>
-    <div class="parallax"><img src="static/background1.jpg" alt="Unsplashed background img 1"></div>
+    <div class="parallax"><img src="static/background1.jpg"></div>
   </div>
-
 
   <div class="container">
     <div class="section">
@@ -65,28 +48,27 @@
       <div class="row">
         <div class="col s12 m4">
           <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons">flash_on</i></h2>
-            <h5 class="center">Main Contributions</h5>
-
-            <p class="light">We build highly accurate machine-learning models to predict the type, size and calories of a food item based on its image. We build training datasets for these three supervised learning tasks mentioned above that will be made publicly available and can be further used by the research community.</p>
+            <h2 class="center brown-text"><i class="material-icons">check_box</i></h2>
+            <h5 class="center">Food detection </h5>
+            <p class="light">estimating the calories in your food using computer vision </p>
           </div>
         </div>
 
         <div class="col s12 m4">
           <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons">group</i></h2>
-            <h5 class="center">User Experience Focused</h5>
+            <h2 class="center brown-text"><i class="material-icons">check_box</i></h2>
+            <h5 class="center">Yoga poses​</h5>
 
-            <p class="light">We were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
+            <p class="light">Burn the calories you ate with AI generated yoga poses</p>
           </div>
         </div>
 
         <div class="col s12 m4">
           <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons">settings</i></h2>
-            <h5 class="center">Easy to work with</h5>
+            <h2 class="center brown-text"><i class="material-icons">check_box</i></h2>
+            <h5 class="center">Dance workouts​</h5>
 
-            <p class="light">Our user can simply upload their food image through the "Upload Image" button, then click the submit button, our system will use Mask R-CNN model and 3D reconstruction method to calculate the total calorie in the image.</p>
+            <p class="light">Get fit with AI as your dance partner </p>
           </div>
         </div>
       </div>
@@ -94,68 +76,31 @@
     </div>
   </div>
 
-
-  <div class="parallax-container valign-wrapper">
-    <div class="section no-pad-bot">
-      <div class="container">
-        <div class="row center">
-          <h5 class="header col s12 light">A Calorie Detected System based on Machine Learning</h5>
-          
-        </div>
-      </div>
-    </div>
-    <div class="parallax"><img src="static/background2.jpg" alt="Unsplashed background img 2"></div>
-  </div>
-
-  <div class="container">
-    <div class="section">
-
-      <div class="row">
-        <div class="col s12 center">
-          <h3><i class="mdi-content-send brown-text"></i></h3>
-          <h4>Project Summary</h4>
-          <p class="left-align light">Calculating the amount of calories in a given food item is now a common task. We propose a machine-learning-based approach to predict the amount of calories from food images. Our system does not require any input from the user, except from an image of the food item. </p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-
-  <div class="parallax-container valign-wrapper">
-    <div class="section no-pad-bot">
-      <div class="container">
-        <div class="row center">
-          <h5 class="header col s12 light">A Calorie Detected System based on Machine Learning</h5>
-        </div>
-      </div>
-    </div>
-    <div class="parallax"><img src="background3.jpg" alt="Unsplashed background img 3"></div>
-  </div>
 
   <footer class="page-footer red">
     <div class="container">
       <div class="row">
         <div class="col l10 s12">
           <h5 class="white-text">Bio</h5>
-          <p class="grey-text text-lighten-4">We are a team of college students working on this project.</p>
+          <p class="grey-text text-lighten-4">Fitness Application with food prediction based on computer vision 
+		  Yoga images generation and AI generated dance workout</p>
 
 
         </div>
         <div class="col l2 s12">
-          <h5 class="white-text">team</h5>
+          <h5 class="white-text">Team</h5>
           <ul>
-            <li><a class="white-text" href="#!">Usman Dankoly</a></li>
-            <li><a class="white-text" href="#!">Shahin</a></li>
-            <li><a class="white-text" href="#!">Lisa</a></li>
-            <li><a class="white-text" href="#!">Bhavana</a></li>
+            <li><a class="white-text" href="#!">DANKOLY Usman</a></li>
+            <li><a class="white-text" href="#!">ATASH AFROUZEH Shahin</a></li>
+            <li><a class="white-text" href="#!">VAN VLEM Lisa</a></li>
+            <li><a class="white-text" href="#!">DEVARAJU Bhavana</a></li>
           </ul>
         </div>
       </div>
     </div>
     <div class="footer-copyright">
       <div class="container">
-      Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+      Created by <a class="brown-text text-lighten-3" href="https://github.com/bhavana1793/Calorie-Predictor-master">Group Dr Fit: Usman, Lisa, Shahin, Bhavana</a>
       </div>
     </div>
   </footer>
