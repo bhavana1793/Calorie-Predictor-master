@@ -18,7 +18,9 @@ Team Members: Shahin, Bhavana, Lisa, Usman
 
 ### Dataset
 Food: We used the Food 101 data set: https://www.kaggle.com/dansbecker/food-101
+
 Yoga: yoga poses data set from kaggle and google images: https://www.kaggle.com/niharika41298/yoga-poses-dataset
+
 Dance: youtube videos: Dance Video1: https://www.youtube.com/watch?v=w4f0Wq1o1R4, Dance Video 2: https://www.youtube.com/watch?v=NdSqAAT28v0​
 
 ## Product Mission
