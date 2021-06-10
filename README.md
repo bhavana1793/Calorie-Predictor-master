@@ -1,4 +1,4 @@
-# Calorie-Predictor
+# Dr FIT
 Team Members: Shahin, Bhavana, Lisa, Usman
 
 
