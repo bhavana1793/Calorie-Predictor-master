@@ -10,7 +10,6 @@ Team Members: Shahin, Bhavana, Lisa, Usman
 ### Food Recognize Algorithm
 - The deep learning model we used is InceptionV3 model
 - Our webappwork is based on a GitHub repo of https://github.com/Yiming-Miao/Calorie-Predictor
-- 
 
 ##Yoga image generation
 -- based on DCGAN
