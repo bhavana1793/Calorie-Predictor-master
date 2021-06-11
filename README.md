@@ -54,14 +54,14 @@ Our web page is designed based on Flask(webframework , HTML (Materialize framewo
 
 
 ## Resources
-## Datasets
+### Datasets
 Food: We used the Food 101 data set: https://www.kaggle.com/dansbecker/food-101
 
 Yoga: yoga poses data set from kaggle and google images: https://www.kaggle.com/niharika41298/yoga-poses-dataset
 
 Dance: youtube videos: Dance Video1: https://www.youtube.com/watch?v=w4f0Wq1o1R4, Dance Video 2: https://www.youtube.com/watch?v=NdSqAAT28v0​
 
-## Other resources
+### Other resources
 Logo: https://www.google.com/search?q=AI+doctor+logo+png&tbm=isch&ved=2ahUKEwjEj_SDh4TxAhX32rsIHdqCB7EQ2-cCegQIABAA&oq=AI+doctor+logo+png&gs_lcp=CgNpbWcQAzoECAAQHlDggAFYy4UBYMGHAWgAcAB4AIABSogBjwKSAQE0mAEAoAEBqgELZ3dzLXdpei1pbWfAAQE&sclient=img&ei=-Eu9YMSzMPe17_UP2oWeiAs&bih=552&biw=1263&rlz=1C1DVJR_esBE840BE843&hl=nl#imgrc=V52S9PP6o7KUIM​
 
 Dataset yoga images: https://www.kaggle.com/niharika41298/yoga-poses-dataset​
