@@ -46,3 +46,24 @@ Our web page is designed based on Flask(webframework , HTML (Materialize framewo
 
 ## resources
 
+##Installation
+Download the repository
+
+Requirements
+python 3.9
+Flask -1.1.2
+pillow
+Tensorflow
+opencv
+
+if using IDE
+launcher application: flask_app.py
+for Cmd line execution:
+In project home directory run below commands:
+set FLASK_APP=flask_app.py
+flask run 
+
+
+
+
+
